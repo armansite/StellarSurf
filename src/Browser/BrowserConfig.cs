@@ -22,7 +22,7 @@ namespace SharpBrowser.Browser {
 
 		public static bool WebSecurity = true;
 		public static bool CrossDomainSecurity = true;
-		public static bool WebGL = true;
+		public static bool WebGL = false;
 		public static bool ApplicationCache = true;
 
 		public static bool Proxy = false;

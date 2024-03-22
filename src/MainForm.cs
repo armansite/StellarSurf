@@ -962,5 +962,29 @@ namespace SharpBrowser {
     }
 }
 
+private void WebBrowser_Navigating(object sender, WebBrowserNavigatingEventArgs e)
+{
+    // List of common ad server URLs
+    string[] adServers = new string[] {
+        "doubleclick.net", // Google's ad service
+        "googlesyndication.com", // Google AdSense
+        "googleadservices.com", // Google AdWords
+        "adnxs.com", // AppNexus
+        "bluekai.com", // Oracle Data Cloud
+        "adsrvr.org", // The Trade Desk
+        "advertising.com", // AOL Advertising
+        "serving-sys.com" // Sizmek
+        // Add more ad server URLs here
+    };
+
+    foreach (var adServer in adServers)
+    {
+        if (e.Url.Host.Contains(adServer))
+        {
+            e.Cancel = true; // Cancel navigation to ad server
+            break;
+        }
+    }
+}
 
 
